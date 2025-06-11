@@ -1,0 +1,45 @@
+
+version: '3.8'
+
+# same ports for host port and container port for ease of use
+# non-sensitive env variables included 
+# secrets for API key
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+      # using port env. variables host port : container port
+    environment:
+      - VITE_BACKEND_URL=http://backend:${BACKEND_PORT}
+      # env. variable from frontend code, backend name from this yml file, BACKEND_PORT defined in env in this same root folder as docker compose
+
+  backend:
+    build:
+      context: ./backend 
+      dockerfile: Dockerfile
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    environment:
+      - PORT=${BACKEND_PORT}
+      - CORS_ORIGIN=${CORS_ORIGIN}
+      - SESSIONS_DIR=${SESSIONS_DIR}
+
+    secrets:
+    # for secret API key as named below
+    - api_key
+
+    volumes:
+    - backend_sessions:/app/sessions
+    # to save chat 'sessions' created in backend container
+
+secrets:
+  api_key:
+    file: ./secret_api_key.txt
+  # path and name of api_key
+
+volumes:
+  backend_sessions:

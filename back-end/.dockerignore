@@ -1,0 +1,23 @@
+# Ignore Node.js specific files
+node_modules/
+npm-debug.log
+.npm/
+
+# Ignore build artifacts (if generated locally, though Dockerfile usually generates these)
+dist/
+build/
+
+# Ignore version control and editor specific files
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Ignore local environment files
+.env
+.env.local
+.env.*.local
+
+# Ignore Docker related files (not needed in the build context itself)
+Dockerfile
+.dockerignore

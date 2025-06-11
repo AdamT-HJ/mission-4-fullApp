@@ -1,0 +1,23 @@
+# Ignore Node.js specific files
+node_modules/
+npm-debug.log
+.npm/
+
+# Ignore version control and editor specific files
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Ignore local environment files
+.env
+.env.local
+.env.*.local
+
+# Ignore Docker related files
+Dockerfile
+.dockerignore
+
+# Log files or temporary files
+*.log
+tmp/

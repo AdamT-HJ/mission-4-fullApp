@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import turnersHeader from '../assets/turners-header.png';
 import turnersFooter from '../assets/turners-footer.png';
 
+
 export default function Homepage() {
   // variables for sessionID
   const [sessionIdInput, setSessionIdInput] = useState("");
@@ -21,7 +22,7 @@ export default function Homepage() {
   const scrollChatToCurrent = useRef(null);
   const chatInputRef = useRef(null);
 
-  const backendUrl = 'http://localhost:5000'; // Ensure this matches your backend's port
+  const backendUrl = import.meta.env.VITE_BACKEND_URL; 
 
   // To scroll chat to current message
   useEffect(() => {
