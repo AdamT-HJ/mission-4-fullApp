@@ -1,5 +1,5 @@
 
-version: '3.8'
+# version: '3.8' - removed deprecated
 
 # same ports for host port and container port for ease of use
 # non-sensitive env variables included 
@@ -8,18 +8,21 @@ version: '3.8'
 services:
   frontend:
     build:
-      context: ./frontend
+      context: ./front-end
       dockerfile: Dockerfile
+      #removed args and env line for nginx proxy implement
+      # args:
+        # VITE_BACKEND_URL: http://localhost:${BACKEND_PORT}
     ports:
-      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+      - "${FRONTEND_PORT}:80"
       # using port env. variables host port : container port
-    environment:
-      - VITE_BACKEND_URL=http://backend:${BACKEND_PORT}
+    # environment:
+      # - VITE_BACKEND_URL=http://backend:${BACKEND_PORT}
       # env. variable from frontend code, backend name from this yml file, BACKEND_PORT defined in env in this same root folder as docker compose
 
   backend:
     build:
-      context: ./backend 
+      context: ./back-end 
       dockerfile: Dockerfile
     ports:
       - "${BACKEND_PORT}:${BACKEND_PORT}"

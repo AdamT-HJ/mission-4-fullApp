@@ -2,7 +2,14 @@
 
 # FIRST STAGE build in node:alpine
 #Using node:alpine build stage name 'build_stage_1'
-FROM node:alpine AS build_stage_1
+FROM node:20-alpine AS build_stage_1
+
+#build argument - commented out to use nginx proxy solution instead 
+#- see homepage comments and vite.config
+#ARG VITE_BACKEND_URL 
+#ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
+#set as env var for this stage
+
 # working directory inside node:alpine root '/' of 'app'
 WORKDIR /app
 # copying package.json and package-lock.json
@@ -24,6 +31,10 @@ RUN npm run build
 
 
 FROM nginx:alpine
+
+#copy Nginx config file to instigate proxy
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Copy built files from 'build' stage
 # /app/dist is from my Vite npm run build
 # /usr/share/nginx/html is Nginx default 

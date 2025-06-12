@@ -22,7 +22,10 @@ export default function Homepage() {
   const scrollChatToCurrent = useRef(null);
   const chatInputRef = useRef(null);
 
-  const backendUrl = import.meta.env.VITE_BACKEND_URL; 
+  // removed to solve 'frontend' comms issue, and instigate Nginx proxy
+  //also changed all endpoint urls from ${backendUrl} to /api so containers work
+  //also changed vite.config so locally works proxy /api
+  // const backendUrl = import.meta.env.VITE_BACKEND_URL; 
 
   // To scroll chat to current message
   useEffect(() => {
@@ -59,9 +62,9 @@ export default function Homepage() {
     try {
       let response;
       if (sessionIdToLoad) {
-        response = await axios.get(`${backendUrl}/session?sessionId=${sessionIdToLoad}`);
+        response = await axios.get(`/api/session?sessionId=${sessionIdToLoad}`);
       } else {
-        response = await axios.get(`${backendUrl}/session`);
+        response = await axios.get(`/api/session`);
       }
 
       const { sessionId: receivedSessionId, conversationHistory: loadedHistory} = response.data;
@@ -91,7 +94,7 @@ export default function Homepage() {
         try {
           // Send the request to the /chat endpoint
           // Includes the received session ID and the full conversation (current history + new prompt)
-          const chatResponse = await axios.post(`${backendUrl}/chat`, {
+          const chatResponse = await axios.post(`/api/chat`, {
             sessionId: receivedSessionId,
             contents: [...currentChatHistory, initialUserPrompt], // Combines existing history with the new prompt
           });
@@ -174,7 +177,7 @@ export default function Homepage() {
 
 
     try {
-      const response = await axios.post(`${backendUrl}/chat`, {
+      const response = await axios.post(`/api/chat`, {
         sessionId: activeSessionId,
         contents: updatedChatForFrontend,
       });

@@ -2,7 +2,7 @@
 
 # FIRST STAGE build in node:alpine
 #Using node:alpine build stage name 'build_stage_1'
-FROM node:alpine AS build_stage_1
+FROM node:20-alpine AS build_stage_1
 # working directory inside node:alpine root '/' of 'app'
 WORKDIR /app
 # copying package.json and package-lock.json
@@ -18,7 +18,7 @@ COPY . .
 #SECOND STAGE
 #node:alpine again as needed for backend node js 
 #static files created in first stage
-FROM node:alpine
+FROM node:20-alpine
 
 WORKDIR /app
 

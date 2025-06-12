@@ -1,0 +1,84 @@
+{
+  "conversationHistory": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "start_conversation"
+        }
+      ]
+    },
+    {
+      "role": "model",
+      "parts": [
+        {
+          "text": "I'm Tina. I help you choose the right insurance policy. May I ask you a few personal questions to make sure I recommend the best policy for you?\n"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "sure lets do it"
+        }
+      ]
+    },
+    {
+      "role": "model",
+      "parts": [
+        {
+          "text": "Great!  To start, could you tell me a little about your vehicle?  What type of car is it, and roughly how much is it worth?  Also, how old is your vehicle?\n"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "its a sedan worth about 30K, its three years old"
+        }
+      ]
+    },
+    {
+      "role": "model",
+      "parts": [
+        {
+          "text": "Okay, a three-year-old sedan worth $30,000.  That's helpful. Now, just to clarify a couple of things before I make a recommendation:  Is it a standard sedan, or is it perhaps a modified vehicle, a sports car, or something similar?  And  do you use it for business, or is it just for personal use?\n"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "yep its modified to go super fast broom broom"
+        }
+      ]
+    },
+    {
+      "role": "model",
+      "parts": [
+        {
+          "text": "Okay, understanding that it's a modified vehicle designed for speed, that changes things a bit.  Because of the modifications and the implied higher risk,  Mechanical Breakdown Insurance (MBI) isn't suitable for your vehicle.  Also, given the modifications, standard Comprehensive Car Insurance might be tricky to obtain and may cost more.  Therefore, I recommend Third Party Car Insurance. This will protect you if you're responsible for an accident causing damage to another vehicle or property.  It doesn't cover damage to your own vehicle, but given the modifications, it might be the most sensible option. Does that sound right to you?  We can discuss other options if you'd prefer.\n"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "sounds good thanks"
+        }
+      ]
+    },
+    {
+      "role": "model",
+      "parts": [
+        {
+          "text": "You're welcome!  Is there anything else I can help you with today regarding your insurance needs?\n"
+        }
+      ]
+    }
+  ]
+}
